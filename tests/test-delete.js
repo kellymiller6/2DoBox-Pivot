@@ -21,19 +21,19 @@ searchTest(driver_chr);
 
 function searchTest(driver) {
   driver.get('https://kellymiller6.github.io/2DoBox-Pivot/idea-box.html');
-  driver.findElement(By.id('idea-title')).sendKeys('hello');
-  driver.findElement(By.id('idea-content')).sendKeys('work');
+  driver.findElement(By.id('title-input')).sendKeys('hello');
+  driver.findElement(By.id('body-input')).sendKeys('work');
   driver.findElement(By.id('save-button')).click();
 
 driver.sleep(3000).then(function() {
-  driver.findElements(By.className('idea-card')).then(function(ideaCardList) {
+  driver.findElements(By.className('item-card')).then(function(ideaCardList) {
     assert.equal(ideaCardList.length, 1);
   });
 })
   driver.findElement(By.id('delete-button')).click();
 
 driver.sleep(3000).then(function() {
-  driver.findElements(By.className('idea-card')).then(function(ideaCardList) {
+  driver.findElements(By.className('item-card')).then(function(ideaCardList) {
     assert.equal(ideaCardList.length, 0);
   });
 })
