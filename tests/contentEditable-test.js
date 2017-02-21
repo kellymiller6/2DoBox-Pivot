@@ -20,16 +20,16 @@ searchTest(driver_chr);
 
 function searchTest(driver) {
   driver.get('https://kellymiller6.github.io/2DoBox-Pivot/idea-box.html');
-  driver.findElement(By.id('idea-title')).sendKeys('hello');
-  driver.findElement(By.id('idea-content')).sendKeys('work');
+  driver.findElement(By.id('title-input')).sendKeys('hello');
+  driver.findElement(By.id('body-input')).sendKeys('work');
   driver.findElement(By.id('save-button')).click();
-  driver.findElement(By.className('titleEdit')).clear();
-  driver.findElement(By.className('titleEdit')).sendKeys('Place');
-  driver.findElement(By.id('line-2')).clear();
-  driver.findElement(By.id('line-2')).sendKeys('test');
+  driver.findElement(By.className('card-title')).clear();
+  driver.findElement(By.className('card-title')).sendKeys('Place');
+  driver.findElement(By.id('card-body')).clear();
+  driver.findElement(By.id('card-body')).sendKeys('test');
 
   driver.sleep(3000).then(function() {
-    driver.findElement(By.className('titleEdit')).getText().then(function(title) {
+    driver.findElement(By.className('card-title')).getText().then(function(title) {
       if(title === 'Place') {
         console.log('Test passed');
       } else {
@@ -39,7 +39,7 @@ function searchTest(driver) {
   });
 
   driver.sleep(3000).then(function() {
-    driver.findElement(By.id('line-2')).getText().then(function(text) {
+    driver.findElement(By.id('card-body')).getText().then(function(text) {
      if(text === 'test') {
        console.log('Test passed');
      }else {
