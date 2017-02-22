@@ -141,7 +141,8 @@ $('#title-input, #body-input').on('keyup', function () {
   }
 })
 
-$('#completed-task').on('click', function() {
+$('#completed-task').on('click', function(e) {
+    e.preventDefault();
     console.log("hello world!");
     // var $cardBody = $('#card-body');
     // if ($cardBody.val() !== " ") {
