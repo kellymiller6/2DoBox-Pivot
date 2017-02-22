@@ -25,8 +25,7 @@ function prependCard($id, $itemTitle, $itemContent, $quality) {
       </div>
       <div id='line-4'>
         <button type="submit" id='completed-task'>Completed Task</button>
-        <button type="submit" id='show-completed
-        -task'>Show Completed Task</button>
+
       </div>
      </div>`);
 }
@@ -167,16 +166,18 @@ $('#title-input, #body-input').on('keyup', function () {
   }
 })
 
-$('#completed-task').on('click', function(e) {
-    e.preventDefault();
-    console.log("hello world!");
-    // var $cardBody = $('#card-body');
-    // if ($cardBody.val() !== " ") {
-    //  $('#cardBody').css('textDecoration', 'line-through');
-    // $('#cardBody').prop('disabled', true);
-  // }
+
+$('#display-side').on('click',  '#completed-task', function() {
+    // $('#cardBody').prop('disabled', true);}
+    $(this).closest('.item-card').toggleClass('completed');
+    var key = $(this).closest('.item-card').attr('id');
+    var updatedClass = $(this).closest('item-card').attr('class');
+    var itemCard = JSON.parse(localStorage.getItem(key));
+    itemCard.class = updatedClass;
+    localStorage.setItem(key,JSON.stringify(itemCard));
+
 })
 
 // $('#show-completed-task').on('click' function () {
-//     var $
+//    $(this).addclass('show');
 // })
