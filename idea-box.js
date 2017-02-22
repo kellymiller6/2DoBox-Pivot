@@ -42,7 +42,12 @@ $(document).ready(function () {
       var $quality = parsedobj.quality;
       prependCard($id, $status, $itemTitle, $itemContent, $quality);
   }
+    $('.completed').hide();
 });
+
+$('#show-completed-task').on('click', function () {
+    $('#display-side').prepend($('.completed').show());
+})
 
 $('#save-button').on('click', function() {
   var $itemTitle = $('#title-input').val();
@@ -176,10 +181,14 @@ $('#display-side').on('click',  '#completed-task', function() {
     if ($(this).closest('.item-card').hasClass('completed')){
       itemCard.status = '';
       localStorage.setItem(key, JSON.stringify(itemCard))
-      $(this).closest('.item-card').toggleClass('completed');
+      $(this).closest('.item-card').removeClass('completed');
     } else {
       itemCard.status = 'completed';
       localStorage.setItem(key, JSON.stringify(itemCard))
-      $(this).closest('.item-card').toggleClass('completed');
+      $(this).closest('.item-card').addClass('completed');
   }
+})
+
+$('#show-more-todos').on('click', function () {
+
 })
