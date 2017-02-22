@@ -21,7 +21,7 @@ function prependCard($id, $itemTitle, $itemContent, $quality) {
         </button>
         <button id='downvote-button'>
         </button>
-        <p id='quality-line'>importance:  <span id="qual">${$quality}</span></p>
+        <p id='quality-line'>importance:  <span id="qual" class="srch-trgt">${$quality}</span></p>
       </div>
       <div id='line-4'>
         <button type="submit" id='completed-task'>Completed Task</button>
@@ -57,10 +57,17 @@ $('#save-button').on('click', function() {
 
 $('#display-side').on('click', '#upvote-button', function () {
   var $qualityText = $(this).siblings('#quality-line').children();
-  if ($qualityText.text() === 'swill') {
-    $qualityText.text('plausible');
-  } else if ($qualityText.text() === 'plausible') {
-    $qualityText.text('genius');
+  switch($qualityText.text()){
+    case 'none':
+    $qualityText.text('low'); break
+    case 'low':
+    $qualityText.text('normal'); break
+    case 'normal':
+    $qualityText.text('high'); break
+    case 'high':
+    $qualityText.text('critical'); break
+    default:
+    $qualityText.text('critical'); break
   }
   var $whatIsGrabbed = $(this).closest('.item-card');
   var idValue = $whatIsGrabbed.attr('id');
@@ -74,10 +81,17 @@ $('#display-side').on('click', '#upvote-button', function () {
 
 $('#display-side').on('click', '#downvote-button', function () {
   var $qualityText = $(this).siblings('#quality-line').children();
-  if ($qualityText.text() === 'genius') {
-    $qualityText.text('plausible');
-  } else if ($qualityText.text() === 'plausible') {
-    $qualityText.text('swill');
+  switch($qualityText.text()){
+    case 'critical':
+    $qualityText.text('high'); break
+    case 'high':
+    $qualityText.text('normal'); break
+    case 'normal':
+    $qualityText.text('low'); break
+    case 'low':
+    $qualityText.text('none'); break
+    default:
+    $qualityText.text('none'); break
   }
   var $whatIsGrabbed = $(this).closest('.item-card');
   var idValue = $whatIsGrabbed.attr('id');
@@ -87,6 +101,18 @@ $('#display-side').on('click', '#downvote-button', function () {
   parselsitem.quality = $quality;
   var stringedit = JSON.stringify(parselsitem);
   localStorage.setItem(idValue, stringedit);
+});
+
+$('.crit-btn, .high-btn, .norm-btn, .low-btn, .none-btn').on('click', function() {
+    var searchBtn = $(this).text().toLowerCase();
+    $('.srch-trgt').each(function() {
+      var searchText = $(this).text().toLowerCase();
+      if (!!searchText.match(searchBtn)) {
+        $(this).closest('.item-card').toggle(true);
+      }else {
+        $(this).closest('.item-card').toggle(false);
+      }
+    });
 });
 
 $('#display-side').on('click', '#delete-button', function() {
