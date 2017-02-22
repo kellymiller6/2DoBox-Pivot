@@ -24,8 +24,8 @@ function prependCard($id, $itemTitle, $itemContent, $quality) {
         <p id='quality-line'>importance:  <span id="qual">${$quality}</span></p>
       </div>
       <div id='line-4'>
-        <button id='completed-task'>Completed Task</button>
-        <button id='show-completed
+        <button type="submit" id='completed-task'>Completed Task</button>
+        <button type="submit" id='show-completed
         -task'>Show Completed Task</button>
       </div>
      </div>`);
@@ -142,11 +142,12 @@ $('#title-input, #body-input').on('keyup', function () {
 })
 
 $('#completed-task').on('click', function() {
-    var $cardBody = $('#card-body');
-    if ($cardBody !== " ") {
-     $('#cardBody').css('textDecoration', 'line-through');
-    $('#cardBody').prop('disabled', true);
-  }
+    console.log("hello world!");
+    // var $cardBody = $('#card-body');
+    // if ($cardBody.val() !== " ") {
+    //  $('#cardBody').css('textDecoration', 'line-through');
+    // $('#cardBody').prop('disabled', true);
+  // }
 })
 
 // $('#show-completed-task').on('click' function () {
