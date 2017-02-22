@@ -24,7 +24,7 @@ function prependCard($id, $itemTitle, $itemContent, $quality) {
         <p id='quality-line'>importance:  <span id="qual" class="srch-trgt">${$quality}</span></p>
       </div>
       <div id='line-4'>
-        <button type="submit" id='completed-task'>Completed Task</button>
+        <button type="submit" class="task-btns" id='completed-task'>completed task</button>
 
       </div>
      </div>`);

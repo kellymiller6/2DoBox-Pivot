@@ -176,11 +176,22 @@ p{
 
 #completed-task {
   border: 1px solid #A9A9A9;
+  padding: 5px;
+  width: 125px;
 }
 
 
 #show-completed-task {
  border: 1px solid #A9A9A9;
+
+}
+
+.task-btns {
+  background-color: #00A79D;
+  border-radius: 25px;
+  color: #ffffff;
+  padding: 3px;
+  font-size: 90%;
 }
 
 .hide {
@@ -195,6 +206,20 @@ p{
 
 
 /***Media Queries***/
+
+@media screen and (min-width: 320px) {
+  #level-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #show-completed-task {
+    width: 95%;
+    margin-top: 20px;
+    }
+}
 
 @media screen and (min-width: 600px) {
   #input-side {
