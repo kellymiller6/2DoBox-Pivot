@@ -56,7 +56,7 @@ function loadAll() {
 
 function showParsed (stored) {
   var $itemTitle = stored.title;
-  var $itemContent = stored.content;
+  var $itemContent = stored.body;
   var $id = stored.id;
   var $status = stored.status;
   var newItem = new Item($id, $status, $itemTitle, $itemContent);
@@ -67,14 +67,6 @@ $('#show-more-todos').on('click', function () {
   $('.item-card').remove();
   loadAll();
 })
-
-// $(document).ready(function () {
-//   for(var i=0;i<localStorage.length;i++) {
-//     var $storedIdeas = getStoredIdeas(localStorage.key(i));
-//     prependCard($storedIdeas)
-//   }
-//     $('.completed').hide();
-// })
 
 function getStoredIdeas (id) {
   return JSON.parse(localStorage.getItem(id));
