@@ -1,13 +1,14 @@
-function Item(id, title, body, quality="normal") {
+function Item(id, status='', title, body, quality="normal") {
   this.id = id;
   this.title = title;
   this.body = body;
+  this.status = status;
   this.quality = quality;
 }
 
-function prependCard($id, $itemTitle, $itemContent, $quality) {
+function prependCard($id, $status, $itemTitle, $itemContent, $quality) {
   $('#display-side').prepend(
-    `<div class='item-card' id=${$id}>
+    `<div class='item-card ${$status}' id=${$id}>
       <div class='title-line'>
         <div  id='line-1'>
           <h2 class='card-title' contenteditable='true'>${$itemTitle}</h2>
@@ -37,8 +38,9 @@ $(document).ready(function () {
       var $itemTitle = parsedobj.title;
       var $itemContent = parsedobj.body;
       var $id = parsedobj.id;
+      var $status = parsedobj.status;
       var $quality = parsedobj.quality;
-      prependCard($id, $itemTitle, $itemContent, $quality);
+      prependCard($id, $status, $itemTitle, $itemContent, $quality);
   }
 });
 
@@ -46,11 +48,12 @@ $('#save-button').on('click', function() {
   var $itemTitle = $('#title-input').val();
   var $itemContent = $('#body-input').val();
   var $id = $.now();
+  var $status = '';
   var $quality = 'normal';
-  var newItem = new Item($id, $itemTitle, $itemContent);
+  var newItem = new Item($id, $status, $itemTitle, $itemContent);
   var stringifiedItem = JSON.stringify(newItem);
   localStorage.setItem($id, stringifiedItem);
-  prependCard($id, $itemTitle, $itemContent, $quality);
+  prependCard($id, $status, $itemTitle, $itemContent, $quality);
   $('#title-input').val('');
   $('#body-input').val('');
 });
@@ -168,16 +171,15 @@ $('#title-input, #body-input').on('keyup', function () {
 
 
 $('#display-side').on('click',  '#completed-task', function() {
-    // $('#cardBody').prop('disabled', true);}
-    $(this).closest('.item-card').toggleClass('completed');
     var key = $(this).closest('.item-card').attr('id');
-    var updatedClass = $(this).closest('item-card').attr('class');
     var itemCard = JSON.parse(localStorage.getItem(key));
-    itemCard.class = updatedClass;
-    localStorage.setItem(key,JSON.stringify(itemCard));
-
+    if ($(this).closest('.item-card').hasClass('completed')){
+      itemCard.status = '';
+      localStorage.setItem(key, JSON.stringify(itemCard))
+      $(this).closest('.item-card').toggleClass('completed');
+    } else {
+      itemCard.status = 'completed';
+      localStorage.setItem(key, JSON.stringify(itemCard))
+      $(this).closest('.item-card').toggleClass('completed');
+  }
 })
-
-// $('#show-completed-task').on('click' function () {
-//    $(this).addclass('show');
-// })
