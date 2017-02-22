@@ -1,4 +1,4 @@
-function Item(id, title, body, quality="swill") {
+function Item(id, title, body, quality="normal") {
   this.id = id;
   this.title = title;
   this.body = body;
@@ -14,14 +14,14 @@ function prependCard($id, $itemTitle, $itemContent, $quality) {
           <button id='delete-button'>
           </button>
         </div>
-        <p id='card-body' contenteditable='true'>${$ideaContent}</p>
+        <p id='card-body' contenteditable='true'>${$itemContent}</p>
       </div>
       <div id='line-3'>
         <button id='upvote-button'>
         </button>
         <button id='downvote-button'>
         </button>
-        <p id='quality-line'>quality:  <span id="qual">${$quality}</span></p>
+        <p id='quality-line'>importance:  <span id="qual">${$quality}</span></p>
       </div>
      </div>`);
 }
@@ -42,7 +42,7 @@ $('#save-button').on('click', function() {
   var $itemTitle = $('#title-input').val();
   var $itemContent = $('#body-input').val();
   var $id = $.now();
-  var $quality = 'swill';
+  var $quality = 'normal';
   var newItem = new Item($id, $itemTitle, $itemContent);
   var stringifiedItem = JSON.stringify(newItem);
   localStorage.setItem($id, stringifiedItem);
