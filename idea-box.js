@@ -6,23 +6,23 @@ function Item(id, status='', title, body, quality="normal") {
   this.quality = quality;
 }
 
-function prependCard($id, $status, $itemTitle, $itemContent, $quality) {
+function prependCard(obj) {
   $('#display-side').prepend(
-    `<div class='item-card ${$status}' id=${$id}>
+    `<div class='item-card ${obj.status}' id=${obj.id}>
       <div class='title-line'>
         <div  id='line-1'>
-          <h2 class='card-title' contenteditable='true'>${$itemTitle}</h2>
+          <h2 class='card-title' contenteditable='true'>${obj.title}</h2>
           <button id='delete-button'>
           </button>
         </div>
-        <p id='card-body' contenteditable='true'>${$itemContent}</p>
+        <p id='card-body' contenteditable='true'>${obj.body}</p>
       </div>
       <div id='line-3'>
         <button id='upvote-button'>
         </button>
         <button id='downvote-button'>
         </button>
-        <p id='quality-line'>importance:  <span id="qual" class="srch-trgt">${$quality}</span></p>
+        <p id='quality-line'>importance:  <span id="qual" class="srch-trgt">${obj.quality}</span></p>
       </div>
       <div id='line-4'>
         <button type="submit" class="task-btns" id='completed-task'>completed task</button>
@@ -30,20 +30,35 @@ function prependCard($id, $status, $itemTitle, $itemContent, $quality) {
       </div>
      </div>`);
 }
+// $(document).ready(function () {
+//   if(localStorage.length > 10){
+//     for(var i = (localStorage.length - 10); i < localStorage.length; i++) {
+//       var parsedobj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+//       displayParsed(parsedobj);
+//     }
+//   } else {
+//     loadAll()
+//   }
+// });
+//
+// function loadAll() {
+//   for(var i = 0; i < localStorage.length; i++) {
+//     var parsedobj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+//     displayParsed(parsedobj)
+//   }
+// };
 
 $(document).ready(function () {
   for(var i=0;i<localStorage.length;i++) {
-      var obj = localStorage.getItem(localStorage.key(i));
-      var parsedobj = JSON.parse(obj);
-      var $itemTitle = parsedobj.title;
-      var $itemContent = parsedobj.body;
-      var $id = parsedobj.id;
-      var $status = parsedobj.status;
-      var $quality = parsedobj.quality;
-      prependCard($id, $status, $itemTitle, $itemContent, $quality);
+    var $storedIdeas = getStoredIdeas(localStorage.key(i));
+    prependCard($storedIdeas)
   }
     $('.completed').hide();
-});
+})
+
+function getStoredIdeas (id) {
+  return JSON.parse(localStorage.getItem(id));
+}
 
 $('#show-completed-task').on('click', function () {
     $('#display-side').prepend($('.completed').show());
@@ -56,9 +71,8 @@ $('#save-button').on('click', function() {
   var $status = '';
   var $quality = 'normal';
   var newItem = new Item($id, $status, $itemTitle, $itemContent);
-  var stringifiedItem = JSON.stringify(newItem);
-  localStorage.setItem($id, stringifiedItem);
-  prependCard($id, $status, $itemTitle, $itemContent, $quality);
+  localStorage.setItem($id, JSON.stringify(newItem));
+  prependCard(newItem);
   $('#title-input').val('');
   $('#body-input').val('');
 });
