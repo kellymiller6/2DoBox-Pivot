@@ -30,31 +30,51 @@ function prependCard(obj) {
       </div>
      </div>`);
 }
-// $(document).ready(function () {
-//   if(localStorage.length > 10){
-//     for(var i = (localStorage.length - 10); i < localStorage.length; i++) {
-//       var parsedobj = JSON.parse(localStorage.getItem(localStorage.key(i)));
-//       displayParsed(parsedobj);
-//     }
-//   } else {
-//     loadAll()
-//   }
-// });
-//
-// function loadAll() {
-//   for(var i = 0; i < localStorage.length; i++) {
-//     var parsedobj = JSON.parse(localStorage.getItem(localStorage.key(i)));
-//     displayParsed(parsedobj)
-//   }
-// };
+
 
 $(document).ready(function () {
-  for(var i=0;i<localStorage.length;i++) {
-    var $storedIdeas = getStoredIdeas(localStorage.key(i));
-    prependCard($storedIdeas)
+  if(localStorage.length > 10){
+    for(var i = (localStorage.length - 10); i < localStorage.length; i++) {
+      var parsedobj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      showParsed(parsedobj);
+    }
+  } else {
+    loadAll()
   }
-    $('.completed').hide();
+  $('.completed').hide();
+});
+
+function loadAll() {
+  for(var i = 0; i < localStorage.length; i++) {
+    var parsedobj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    showParsed(parsedobj);
+  }
+  $('.completed').hide();
+};
+
+
+
+function showParsed (stored) {
+  var $itemTitle = stored.title;
+  var $itemContent = stored.content;
+  var $id = stored.id;
+  var $status = stored.status;
+  var newItem = new Item($id, $status, $itemTitle, $itemContent);
+  prependCard(newItem);
+}
+
+$('#show-more-todos').on('click', function () {
+  $('.item-card').remove();
+  loadAll();
 })
+
+// $(document).ready(function () {
+//   for(var i=0;i<localStorage.length;i++) {
+//     var $storedIdeas = getStoredIdeas(localStorage.key(i));
+//     prependCard($storedIdeas)
+//   }
+//     $('.completed').hide();
+// })
 
 function getStoredIdeas (id) {
   return JSON.parse(localStorage.getItem(id));
