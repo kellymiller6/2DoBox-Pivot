@@ -140,6 +140,7 @@ $('#title-input, #body-input').on('keyup', function () {
   }
 })
 
+
 $('#display-side').on('click',  '#completed-task', function() {
     // $('#cardBody').prop('disabled', true);}
     $(this).closest('.item-card').toggleClass('completed');
@@ -152,5 +153,5 @@ $('#display-side').on('click',  '#completed-task', function() {
 })
 
 // $('#show-completed-task').on('click' function () {
-//     var $
+//    $(this).addclass('show');
 // })
