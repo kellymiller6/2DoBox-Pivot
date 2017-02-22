@@ -149,8 +149,14 @@ $('#completed-task').on('click', function(e) {
     //  $('#cardBody').css('textDecoration', 'line-through');
     // $('#cardBody').prop('disabled', true);
   // }
+      //on page reload addclass hide card
+      // $(this).load(function () {
+      // $('#completed-task').addclass('hide');
+
+  });
+
 })
 
 // $('#show-completed-task').on('click' function () {
-//     var $
+//    $(this).addclass('show');
 // })
