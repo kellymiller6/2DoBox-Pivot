@@ -153,6 +153,10 @@ p{
     background: #045E55;
 }
 
+#save-button:disabled {
+    background: #6D6E71;
+}
+
 #search,
 #title-input {
   font-size: 24px;
