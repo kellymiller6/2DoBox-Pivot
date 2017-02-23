@@ -2,10 +2,26 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
   height: 100vh;
   width: 100vw;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+
+}
+
+h1{
+  margin: 20px 0 20px 0;
+  font-family: 'Roboto Slab', sans-serif;
+  color: #6D6E71;
+}
+
+h2 {
+  max-width: 80%;
+  color: #6D6E71;
+}
+
+p{
+  margin: 0;
 }
 
 #title-color {
@@ -19,17 +35,39 @@ body {
   width: 100%;
 }
 
-#title-input{
-  width: 80%;
-}
-
 #enter-div {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 300px;
-  background-color: #E5F3F2;
   width: 100%;
+  background-color: #E5F3F2;
+}
+
+#body-input {
+  width: 90%;
+  max-height: 80px;
+  min-height: 80px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  border: 2px solid #D1D3D4;
+  font-size: 24px;
+}
+
+#search-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#search,
+#title-input {
+  width: 90%;
+  margin-bottom: 20px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  border: 2px solid #D1D3D4;
 }
 
 #display-side {
@@ -38,6 +76,35 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+
+/***BUTTONS***/
+
+#save-button,
+#show-more-todos,
+#show-completed-task {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #FFFFFF;
+  background: #00A79D;
+  border: none;
+  padding-bottom: 4px;
+  letter-spacing: 1px;
+  height: 32px;
+  width: 90%;
+}
+
+#save-button:hover {
+    background: #045E55;
+}
+
+#save-button:disabled {
+    background: #6D6E71;
+}
+
+#level-buttons {
+  margin: 0px 0 10px 10px;
 }
 
 .level-btn {
@@ -64,106 +131,13 @@ body {
   background-image: url('images/delete-hover.svg');
 }
 
-
-h1{
-  margin: 20px 0 0 0;
-  font-family: 'Roboto Slab', sans-serif;
-  color: #6D6E71;
-  margin-bottom: 20px;
-}
-
-h2 {
-  max-width: 80%;
-  color: #6D6E71;
-}
-
-.item-card {
-  margin: 0 auto;
-  width: 90%;
-}
-
-#title-input{
-  font-size: 12px;
-  width: 90%;
-}
-
-#body-input {
-  font-size: 24px;
-  width: 90%;
-  max-height: 80px;
-  min-height: 80px;
-  letter-spacing: 1px;
-  border: 2px solid #D1D3D4;
-  margin-bottom: 20px;
-}
-
-#line-1 {
-  display: flex;
-  justify-content: space-between;
-}
-
-#card-body {
-  margin: 10px 0;
-  max-width: 90%;
-  color: #939598;
-  line-height: 25px;
-}
-
-#line-3 {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-#line-4 {
-  padding-bottom: 10px;
-  border-bottom: 2px solid #D1D3D4;
-}
-
-p{
-  margin: 0;
-}
-
-#quality-line {
-  color: #6D6E71;
-}
-
-#save-button,
-#show-more-todos,
-#show-completed-task {
-  margin-bottom: 20px;
-  font-size: 20px;
-  color: #FFFFFF;
-  background: #00A79D;
+.task-btns {
+  background-color: #00A79D;
   border: none;
-  padding-bottom: 4px;
-  letter-spacing: 1px;
-  height: 32px;
-  width: 90%;
-}
-
-#search-box{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-#save-button:hover {
-    background: #045E55;
-}
-
-#save-button:disabled {
-    background: #6D6E71;
-}
-
-#search,
-#title-input {
-  font-size: 24px;
-  letter-spacing: 1px;
-  border: 2px solid #D1D3D4;
-  width: 90%;
-  margin-bottom: 20px;
+  border-radius: 25px;
+  color: #ffffff;
+  padding: 3px;
+  font-size: 90%;
 }
 
 #upvote-button {
@@ -202,35 +176,51 @@ p{
   width: 125px;
 }
 
-/*#show-completed-task {
-  display: flex;
-  align-self: center;
-}*/
-
 #show-more-todos {
   border: 1px solid #A9A9A9;
-  padding: 5px;
+  padding: 1px 5px;
   width: 125px;
   margin: 25px;
 }
 
-#level-buttons {
-  margin: 0px 0 10px 10px;
+/***Item-Card-Section***/
+.item-card {
+  margin: 0 auto;
+  width: 90%;
 }
 
-.task-btns {
-  background-color: #00A79D;
-  border: none;
-  border-radius: 25px;
-  color: #ffffff;
-  padding: 3px;
-  font-size: 90%;
+#card-body {
+  margin: 10px 0;
+  max-width: 90%;
+  color: #939598;
+  line-height: 25px;
 }
+
+#line-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+#line-3 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#line-4 {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #D1D3D4;
+}
+
+#quality-line {
+  color: #6D6E71;
+}
+
+/***States***/
 
 .hide {
   display: none;
 }
-
 
 .completed {
   background-color: #afebed;
