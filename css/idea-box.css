@@ -45,9 +45,9 @@ p{
 
 #body-input {
   width: 90%;
-  max-height: 80px;
-  min-height: 80px;
+  height: 80px;
   margin-bottom: 20px;
+  resize: none;
   letter-spacing: 1px;
   border: 2px solid #D1D3D4;
   font-size: 24px;
@@ -225,4 +225,23 @@ p{
 
 .completed {
   background-color: #afebed;
+}
+
+/***MEDIA QUERIES***/
+
+@media screen and (min-width: 640px) {
+ .item-card,
+ #card-body,
+ #save-button,
+ #show-more-todos,
+ #show-completed-task,
+ #search,
+ #title-input,
+ #body-input {
+   width: 60%;
+ }
+
+ textarea {
+   height: 30px;
+ }
 }
