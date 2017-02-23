@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 body {
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
 
@@ -25,7 +25,7 @@ p{
 }
 
 #title-color {
-    color: #00A79D;
+  color: #00A79D;
 }
 
 #input-side {
@@ -78,12 +78,13 @@ p{
   width: 100%;
 }
 
-
 /***BUTTONS***/
 
 #save-button,
 #show-more-todos,
 #show-completed-task {
+  width: 90%;
+  height: 32px;
   margin-bottom: 20px;
   font-size: 20px;
   color: #FFFFFF;
@@ -91,16 +92,15 @@ p{
   border: none;
   padding-bottom: 4px;
   letter-spacing: 1px;
-  height: 32px;
-  width: 90%;
+
 }
 
 #save-button:hover {
-    background: #045E55;
+  background: #045E55;
 }
 
 #save-button:disabled {
-    background: #6D6E71;
+  background: #6D6E71;
 }
 
 #level-buttons {
@@ -108,8 +108,8 @@ p{
 }
 
 .level-btn {
-  display: inline-block;
   margin: 10px 5px;
+  display: inline-block;
   background-color: #FFF;
   border: none;
 }
@@ -119,12 +119,13 @@ p{
 }
 
 #delete-button {
+  width: 30px;
+  margin-top: 22px;
   background: none;
   border: none;
   background-image: url('images/delete.svg');
   background-repeat: no-repeat;
-  width: 30px;
-  margin-top: 22px;
+
 }
 
 #delete-button:hover {
@@ -132,23 +133,23 @@ p{
 }
 
 .task-btns {
+  padding: 3px;
   background-color: #00A79D;
   border: none;
   border-radius: 25px;
   color: #ffffff;
-  padding: 3px;
   font-size: 90%;
 }
 
 #upvote-button {
+  width: 30px;
+  height: 50px;
+  margin-top: 22px;
+  margin-right: 10px;
   background: none;
   border: none;
   background-image: url('images/upvote.svg');
   background-repeat: no-repeat;
-  width: 30px;
-  margin-right: 10px;
-  height: 50px;
-  margin-top: 22px;
 }
 
 #upvote-button:hover {
@@ -156,14 +157,15 @@ p{
 }
 
 #downvote-button {
+  width: 30px;
+  height: 50px;
+  margin-right: 10px;
+  margin-top: 22px;
   background: none;
   border: none;
   background-image: url('images/downvote.svg');
   background-repeat: no-repeat;
-  width: 30px;
-  margin-right: 10px;
-  height: 50px;
-  margin-top: 22px;
+
 }
 
 #downvote-button:hover {
@@ -171,9 +173,9 @@ p{
 }
 
 #completed-task {
-  border: 1px solid #A9A9A9;
-  padding: 5px;
   width: 125px;
+  padding: 5px;
+  border: 1px solid #A9A9A9;
 }
 
 #show-more-todos {
