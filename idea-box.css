@@ -179,10 +179,11 @@ p{
 }
 
 #show-more-todos {
-  border: 1px solid #A9A9A9;
-  padding: 1px 5px;
   width: 125px;
   margin: 25px;
+  border: 1px solid #A9A9A9;
+  padding: 1px 5px;
+
 }
 
 /***Item-Card-Section***/
@@ -227,60 +228,3 @@ p{
 .completed {
   background-color: #afebed;
 }
-
-
-
-
-
-/***Media Queries***/
-
-/*@media screen and (min-width: 320px) {
-  #level-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-
-    #enter-div {
-      height: 400px;
-    }
-
-    #show-completed-task {
-      margin-top: 15px;
-      width: 95%;
-    }
-}*/
-/*
-@media screen and (min-width: 600px) {
-  #input-side {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    width: 100%;
-  }
-
-  .ninety {
-    border: solid 1px #D1D3D4;
-    width: 50vw;
-    margin-top: 20px;
-  }
-
-  h1 {
-    font-size: 70px;
-  }
-
-  #body-input {
-    min-height: 0;
-    max-height: 26px;
-    max-width: 50%;
-    min-width: 50%;
-  }
-
-  .item-card {
-    margin:0 auto;
-    width: 50%;
-  }
-
-}*/
